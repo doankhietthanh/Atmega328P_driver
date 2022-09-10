@@ -3,7 +3,6 @@
 #define F_CPU 1000000UL // 1MHz
 #include <util/delay.h>
 #include <atmega328p_gpio_driver.h>
-#include <atmega328p_clock_prescaler_driver.h>
 #include <atmega328p_watchdog_timer_driver.h>
 
 ISR(INT0_vect)

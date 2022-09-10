@@ -3,9 +3,8 @@
 #define F_CPU 1000000UL // 1MHz
 #include <util/delay.h>
 #include <atmega328p_gpio_driver.h>
-#include <atmega328p_clock_prescaler_driver.h>
-volatile uint8_t portbhistory = 0xFF;
 
+volatile uint8_t portbhistory = 0xFF;
 ISR(PCINT2_vect)
 {
   uint8_t changedbits;
