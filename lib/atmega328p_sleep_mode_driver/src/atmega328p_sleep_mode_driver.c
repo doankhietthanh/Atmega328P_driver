@@ -1,6 +1,6 @@
 #include "atmega328p_sleep_mode_driver.h"
 
-void SLEEP_Init(uint8_t mode)
+void SLEEP(uint8_t mode)
 {
     sleep_enable();
     set_sleep_mode(mode);
@@ -12,8 +12,9 @@ void SLEEP_Init(uint8_t mode)
     mcucr2 = mcucr1 & ~_BV(BODSE);
     MCUCR = mcucr1;
     MCUCR = mcucr2;
-    sei();           // ensure interrupts enabled so we can wake up again
-    sleep_cpu();     // go to sleep
+    sei(); // ensure interrupts enabled so we can wake up again
+    // sleep_cpu();     // go to sleep
+    asm("sleep");    //
     sleep_disable(); // wake up here
     ADCSRA = adcsra; // restore ADCSRA
 }

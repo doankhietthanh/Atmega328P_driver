@@ -7,9 +7,9 @@
 
 ISR(INT0_vect)
 {
-    if (GPIO_ReadPin(GPIO_PORT_D, GPIO_PIN_2) == 0)
+    if (GPIO_ReadPin(&GPIO_PORT_D, GPIO_PIN_2) == 0)
     {
-        while (GPIO_ReadPin(GPIO_PORT_D, GPIO_PIN_2) == 0)
+        while (GPIO_ReadPin(&GPIO_PORT_D, GPIO_PIN_2) == 0)
         {
         }
     }
@@ -25,7 +25,7 @@ int main(void)
     while (1)
     {
         WDT_On(WDT_Mode_SysRst, WDT_Period_2s);
-        GPIO_TogglePin(GPIO_PORT_B, GPIO_PIN_5);
+        GPIO_TogglePin(&GPIO_PORT_B, GPIO_PIN_5);
         _delay_us(200000);
         WDT_Off();
     }
@@ -34,9 +34,9 @@ int main(void)
 
 static void GPIO_Init(void)
 {
-    GPIO_SetMode(GPIO_PORT_D, GPIO_PIN_2, GPIO_MODE_INPUT);
-    GPIO_SetMode(GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
-    GPIO_WritePin(GPIO_PORT_D, GPIO_PIN_2, 1);
+    GPIO_SetMode(&GPIO_PORT_D, GPIO_PIN_2, GPIO_MODE_INPUT);
+    GPIO_SetMode(&GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
+    GPIO_WritePin(&GPIO_PORT_D, GPIO_PIN_2, 1);
 }
 
 static void ISR_Init(void)

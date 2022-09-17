@@ -13,11 +13,11 @@ ISR(PCINT2_vect)
 
   if (changedbits & _BV(5))
   {
-    GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_SET);
+    GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_SET);
   }
   if (changedbits & _BV(6))
   {
-    GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_RESET);
+    GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_RESET);
   }
 }
 
@@ -34,7 +34,7 @@ int main(void)
 
   while (1)
   {
-    GPIO_TogglePin(GPIO_PORT_B, GPIO_PIN_5);
+    GPIO_TogglePin(&GPIO_PORT_B, GPIO_PIN_5);
     _delay_ms(1000);
   }
   return 0;
@@ -42,9 +42,9 @@ int main(void)
 
 static void GPIO_Init(void)
 {
-  GPIO_SetMode(GPIO_PORT_D, GPIO_PIN_5, GPIO_MODE_INPUT);
-  GPIO_SetMode(GPIO_PORT_D, GPIO_PIN_6, GPIO_MODE_INPUT);
+  GPIO_SetMode(&GPIO_PORT_D, GPIO_PIN_5, GPIO_MODE_INPUT);
+  GPIO_SetMode(&GPIO_PORT_D, GPIO_PIN_6, GPIO_MODE_INPUT);
 
-  GPIO_SetMode(GPIO_PORT_B, GPIO_PIN_4, GPIO_MODE_OUTPUT);
-  GPIO_SetMode(GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
+  GPIO_SetMode(&GPIO_PORT_B, GPIO_PIN_4, GPIO_MODE_OUTPUT);
+  GPIO_SetMode(&GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
 }

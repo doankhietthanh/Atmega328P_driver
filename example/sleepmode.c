@@ -23,14 +23,14 @@ int main()
 
         for (int8_t i = 0; i < 3; i++)
         {
-            GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_5, 0);
+            GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_5, 0);
             _delay_ms(1000);
-            GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_5, 1);
+            GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_5, 1);
             _delay_ms(1000);
         }
-        GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_5, 0);
+        GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_5, 0);
         SLEEP_Init(SLEEP_MODE_PWR_DOWN);
-        GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_5, 1);
+        GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_5, 1);
     }
 
     return 0;
@@ -38,7 +38,7 @@ int main()
 
 static void GPIO_Init(void)
 {
-    GPIO_SetMode(GPIO_PORT_D, GPIO_PIN_2, GPIO_MODE_INPUT);
-    GPIO_WritePin(GPIO_PORT_D, GPIO_PIN_2, GPIO_PIN_SET);
-    GPIO_SetMode(GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
+    GPIO_SetMode(&GPIO_PORT_D, GPIO_PIN_2, GPIO_MODE_INPUT);
+    GPIO_WritePin(&GPIO_PORT_D, GPIO_PIN_2, GPIO_PIN_SET);
+    GPIO_SetMode(&GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
 }

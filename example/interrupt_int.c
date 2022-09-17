@@ -6,12 +6,12 @@
 
 ISR(INT0_vect)
 {
-  GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_SET);
+  GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_SET);
 }
 
 ISR(INT1_vect)
 {
-  GPIO_WritePin(GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_RESET);
+  GPIO_WritePin(&GPIO_PORT_B, GPIO_PIN_4, GPIO_PIN_RESET);
 }
 
 static void GPIO_Init(void);
@@ -24,7 +24,7 @@ int main(void)
 
   while (1)
   {
-    GPIO_TogglePin(GPIO_PORT_B, GPIO_PIN_5);
+    GPIO_TogglePin(&GPIO_PORT_B, GPIO_PIN_5);
     _delay_ms(1000);
   }
   return 0;
@@ -32,13 +32,13 @@ int main(void)
 
 static void GPIO_Init(void)
 {
-  GPIO_SetMode(GPIO_PORT_D, GPIO_PIN_2, GPIO_MODE_INPUT);
-  GPIO_SetMode(GPIO_PORT_D, GPIO_PIN_3, GPIO_MODE_INPUT);
-  GPIO_WritePin(GPIO_PORT_D, GPIO_PIN_2, GPIO_PIN_SET);
-  GPIO_WritePin(GPIO_PORT_D, GPIO_PIN_3, GPIO_PIN_SET);
+  GPIO_SetMode(&GPIO_PORT_D, GPIO_PIN_2, GPIO_MODE_INPUT);
+  GPIO_SetMode(&GPIO_PORT_D, GPIO_PIN_3, GPIO_MODE_INPUT);
+  GPIO_WritePin(&GPIO_PORT_D, GPIO_PIN_2, GPIO_PIN_SET);
+  GPIO_WritePin(&GPIO_PORT_D, GPIO_PIN_3, GPIO_PIN_SET);
 
-  GPIO_SetMode(GPIO_PORT_B, GPIO_PIN_4, GPIO_MODE_OUTPUT);
-  GPIO_SetMode(GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
+  GPIO_SetMode(&GPIO_PORT_B, GPIO_PIN_4, GPIO_MODE_OUTPUT);
+  GPIO_SetMode(&GPIO_PORT_B, GPIO_PIN_5, GPIO_MODE_OUTPUT);
 }
 
 static void ISR_Init(void)
